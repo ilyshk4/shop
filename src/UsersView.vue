@@ -1,7 +1,7 @@
 <template>
 
   <v-container v-if="users">
-    <v-btn class="mb-4" v-if="isManager()" @click="showCreateDialog()">Добавить</v-btn>
+    <v-btn class="mb-4" v-if="isAdmin()" @click="showCreateDialog()">Добавить</v-btn>
     <v-list lines="two">
       <v-list-item
         v-for="user in users"
@@ -16,8 +16,7 @@
         </template>
 
         <template v-slot:append>
-          <v-btn v-if="isManager()" @click="showUpdateDialog(user)">Изменить</v-btn>
-          <v-btn v-if="isManager()" class="ms-5" @click="showDeleteDialog(user)">Удалить</v-btn>
+          <v-btn v-if="isAdmin()" class="ms-5" @click="showDeleteDialog(user)">Удалить</v-btn>
         </template>
       </v-list-item>
     </v-list>

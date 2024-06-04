@@ -31,7 +31,7 @@ async function onDialogSubmit() {
   dialogLoading.value = true;
 
   axios.delete(props.url, {
-    params: { brand_id: props.updateGood.id }
+    params: { user_id: props.updateGood.id }
   }
   ).then(response => {
     dialogLoading.value = false;

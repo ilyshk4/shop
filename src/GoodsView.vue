@@ -11,7 +11,9 @@
               :src="'http://localhost:8000/images/view/' + image.filename" cover></v-carousel-item>
           </v-carousel>
           <v-card-actions class="d-block">
-            <v-btn @click="showPurchaseDialog(good)" block>Купить</v-btn>
+            <v-btn v-if="isUser()" @click="showPurchaseDialog(good)" :disabled="good.quantity == 0" block>
+              {{ good.quantity ? "Купить" : "(Нет в наличии)"  }}
+            </v-btn>
             <v-btn v-if="isManager()" @click="showUpdateDialog(good)">Изменить</v-btn>
             <v-btn v-if="isManager()" @click="showImagesDialog(good)">Изображения</v-btn>
             <v-btn v-if="isManager()" @click="showDeleteDialog(good)" :disabled="good.purchases?.length">Удалить</v-btn>

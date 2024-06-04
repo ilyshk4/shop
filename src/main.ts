@@ -31,10 +31,10 @@ registerPlugins(app)
 restoreToken();
 
 const routes = [
-    { path: '/', component: GoodsView },
-    { path: '/categories', component: CategoriesView },
-    { path: '/brands', component: BrandsView },
-    { path: '/users', component: UsersView },
+    { path: '/', name: "Товары", component: GoodsView },
+    { path: '/categories', name: "Категории", component: CategoriesView },
+    { path: '/brands', name: "Бренды", component: BrandsView },
+    { path: '/users', name: "Пользователи", component: UsersView },
 ]
 
 const router = createRouter({

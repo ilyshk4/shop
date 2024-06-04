@@ -35,7 +35,7 @@
 
 
         <v-app-bar-title class="text-h5 font-weight-light">
-            <route-link to="/" tag style="cursor:pointer">Интернет-магазин</route-link>
+            <route-link to="/" tag style="cursor:pointer">Интернет-магазин — {{ routeName }}</route-link>
         </v-app-bar-title>
 
         <template v-if="user" v-slot:append>
@@ -70,10 +70,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { getComputedUser, login, logout } from '../auth'
+import { useRoute } from 'vue-router';
 
 const user = getComputedUser()
+    
+const route = useRoute()
+const routeName = computed(() => route.name);
 
 let loginDialog = ref(false);
 let loginUsername = ref('');
